@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EmpowHer | Customer Categories</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff5f8;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #000000, #8c52ff);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 40px;
+        }
+
+        header p {
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .container {
+            padding: 50px 12%;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 30px;
+            color: #8c52ff;
+            margin-bottom: 35px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .grid a {
+            background: #ffe3ed;
+            padding: 45px 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+            transition: 0.3s ease;
+        }
+
+        .grid a:hover {
+            background: #8c52ff;
+            color: white;
+            transform: translateY(-6px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        footer {
+            background: #2b2b2b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .container {
+                padding: 40px 8%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>EmpowHer</h1>
+        <p>Where passion meets opportunity.</p>
+    </header>
+
+    <!-- CATEGORY SECTION -->
+    <div class="container">
+        <h2 class="title">Shop by Category</h2>
+
+        <div class="grid">
+            <a href="#">Bridal</a>
+            <a href="#">Food</a>
+            <a href="#">Jewellery</a>
+            <a href="#">Gift</a>
+            <a href="#">Clothes</a>
+            <a href="#">Service</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 EmpowHer | Women Business Support System
+    </footer>
+
+</body>
+
+</html>

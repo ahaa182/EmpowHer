@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EmpowHer | Entrepreneur Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #000000;
+            color: #8c52ff;
+            height: 100vh;
+        }
+
+        .main-container {
+            width: 95%;
+            height: 95vh;
+            margin: auto;
+            margin-top: 2vh;
+            background: #000000;
+            border-radius: 30px;
+            display: flex;
+            overflow: hidden;
+            border: 2px solid #8c52ff;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 260px;
+            background: #000000;
+            border-right: 2px solid #8c52ff;
+            padding: 25px 15px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .menu a {
+            display: block;
+            padding: 14px 18px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            color: #8c52ff;
+            text-decoration: none;
+            border: 2px solid transparent;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            border: 2px solid #8c52ff;
+            background: #8c52ff;
+            color: #000000;
+        }
+
+        /* CONTENT */
+        .content {
+            flex: 1;
+            padding: 35px;
+            overflow-y: auto;
+        }
+
+        .content h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: #000000;
+            border-radius: 18px;
+            border: 2px solid #8c52ff;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #8c52ff;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #8c52ff;
+            color: #000000;
+        }
+
+        button {
+            background: #000000;
+            border: 2px solid #8c52ff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: #8c52ff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #8c52ff;
+            color: #000000;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #8c52ff;
+            background: #000000;
+            color: #8c52ff;
+            margin-bottom: 15px;
+        }
+
+        @media(max-width: 900px) {
+            .sidebar {
+                width: 200px;
+            }
+        }
+
+        /* Profile Styles */
+        .profile-panel {
+            background: black;
+            border: 2px solid #8c52ff;
+            border-radius: 22px;
+            padding: 25px;
+            color: white;
+            min-height: 90vh;
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .profile-header h2 {
+            color: #8c52ff
+        }
+
+        .profile-header button {
+            background: #8c52ff;
+            border: none;
+            color: black;
+            padding: 8px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+
+        .section h3 {
+            color: #8c52ff;
+            margin-bottom: 10px;
+        }
+
+        .field {
+            margin-bottom: 10px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 3px;
+            font-size: 13px;
+        }
+
+        .field input,
+        .field textarea,
+        .field select {
+            width: 100%;
+            padding: 9px;
+            border-radius: 8px;
+            border: 1px solid #8c52ff;
+            background: black;
+            color: white;
+        }
+
+        .upload-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .upload-grid img {
+            width: 100%;
+            max-width: 150px;
+            border-radius: 12px;
+            border: 1.5px solid #8c52ff;
+            margin: 6px 0;
+        }
+
+        .bottom-btns {
+            display: none;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .bottom-btns button {
+            background: #8c52ff;
+            border: none;
+            color: black;
+            padding: 9px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-container">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h2>EmpowHer</h2>
+
+            <div class="menu">
+                <a href="#" class="active" onclick="loadPage('profile')">Profile</a>
+                <a href="#" onclick="loadPage('products')">Manage Products / Services</a>
+                <a href="#" onclick="loadPage('categories')">Category Management</a>
+                <a href="#" onclick="loadPage('orders')">Messages / Orders</a>
+                <a href="index.html">Logout</a>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content" id="content">
+            <h1>Welcome, Entrepreneur!</h1>
+
+            <div class="card">
+                <p>Select any option from the menu to manage your business.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function setActive(el) {
+            document.querySelectorAll('.menu a').forEach(a => a.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function loadPage(page) {
+            const content = document.getElementById("content");
+            const eventTarget = event.target.tagName === 'A' ? event.target : event.target.closest('a');
+
+            if (eventTarget) {
+                setActive(eventTarget);
+            }
+
+
+            if (page === "profile") {
+                content.innerHTML = `
+                <div class="profile-panel">
+
+                    <div class="profile-header">
+                        <h2>Profile Settings</h2>
+                        <button id="editBtn" onclick="enableEdit()">✏ Edit Details</button>
+                    </div>
+
+                    <form id="profileForm" onsubmit="saveProfile(event)">
+
+                        <div class="section">
+                            <h3>📝 Personal Information</h3>
+
+                            <div class="field">
+                                <label>Full Name</label>
+                                <input type="text" placeholder="Enter your full name" disabled>
+                            </div>
+
+                            <div class="field">
+                                <label>Email</label>
+                                <input type="email" placeholder="Enter your email" disabled>
+                            </div>
+
+                            <div class="field">
+                                <label>Phone Number</label>
+                                <input type="text" placeholder="Enter your phone number" disabled>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <h3>🏢 Business Information</h3>
+
+                            <div class="field">
+                                <label>Business Name</label>
+                                <input type="text" placeholder="Enter your business name" disabled>
+                            </div>
+
+                            <div class="field">
+                                <label>Business Category</label>
+                                <select disabled>
+                                    <option value="">Select Category</option>
+                                    <option>Bridal</option>
+                                    <option>Food</option>
+                                    <option>Jewellery</option>
+                                    <option>Gift</option>
+                                    <option>Clothes</option>
+                                    <option>Service</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label>Business Description</label>
+                                <textarea placeholder="Describe your business..." disabled></textarea>
+                            </div>
+
+                            <div class="field">
+                                <label>Business Address</label>
+                                <textarea placeholder="Enter business address..." disabled></textarea>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <h3>📷 Upload Section</h3>
+
+                            <div class="upload-grid">
+                                <div>
+                                    <p>Profile Picture</p>
+                                    <!-- Added onclick to trigger file input -->
+                                    <img id="profilePreview" src="https://via.placeholder.com/150" onclick="document.getElementById('profilePic').click()" style="cursor: pointer;">
+                                    <input type="file" id="profilePic" hidden onchange="previewImage(this,'profilePreview')">
+                                </div>
+
+                                <div>
+                                    <p>Business Logo</p>
+                                    <!-- Added onclick to trigger file input -->
+                                    <img id="logoPreview" src="https://via.placeholder.com/150" onclick="document.getElementById('logoPic').click()" style="cursor: pointer;">
+                                    <input type="file" id="logoPic" hidden onchange="previewImage(this,'logoPreview')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bottom-btns" id="bottomBtns">
+                            <button type="button" onclick="cancelEdit()">Cancel</button>
+                            <button type="submit">Save Changes</button>
+                        </div>
+
+                    </form>
+
+                </div>`;
+                // Initialize listeners after rendering
+                setTimeout(initProfileListeners, 0);
+            }
+
+            else if (page === "products") {
+                content.innerHTML = `
+                <h1>Manage Products / Services</h1>
+                <div class="card">
+                    <input type="text" placeholder="Product Name">
+                    <input type="number" placeholder="Price">
+                    <select>
+                        <option>Select Category</option>
+                        <option>Bridal</option>
+                        <option>Food</option>
+                        <option>Jewellery</option>
+                        <option>Gift</option>
+                        <option>Clothes</option>
+                        <option>Service</option>
+                    </select>
+                    <button>Add Product</button>
+                </div>`;
+            }
+
+            else if (page === "categories") {
+                content.innerHTML = `
+                <h1>Category Management</h1>
+                <div class="card">
+                    <input type="text" placeholder="Category Name">
+                    <button>Add Category</button>
+                </div>`;
+            }
+
+            else if (page === "orders") {
+                content.innerHTML = `
+                <h1>Messages / Orders</h1>
+                <div class="card">
+                    <table>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                            <td>#1001</td>
+                            <td>Anjali</td>
+                            <td>Pending</td>
+                        </tr>
+                        <tr>
+                            <td>#1002</td>
+                            <td>Meera</td>
+                            <td>Completed</td>
+                        </tr>
+                    </table>
+                </div>`;
+            }
+        }
+
+        let inputs;
+
+        function initProfileListeners() {
+            inputs = document.querySelectorAll("#profileForm input, textarea, select");
+            const form = document.getElementById("profileForm");
+            if (form) {
+                // Remove existing listeners to avoid duplicates (though refreshing innerHTML clears them anyway)
+                form.onsubmit = function (e) {
+                    e.preventDefault();
+                    alert("Profile updated successfully!");
+                    disableEdit();
+                };
+            }
+        }
+
+        function enableEdit() {
+            if (!inputs) initProfileListeners();
+            inputs.forEach(i => i.disabled = false);
+            document.getElementById("bottomBtns").style.display = "flex";
+            document.getElementById("editBtn").style.display = "none";
+        }
+
+        function cancelEdit() {
+            disableEdit();
+        }
+
+        function disableEdit() {
+            if (!inputs) initProfileListeners();
+            inputs.forEach(i => i.disabled = true);
+            document.getElementById("bottomBtns").style.display = "none";
+            document.getElementById("editBtn").style.display = "inline-block";
+        }
+
+        function previewImage(input, target) {
+            const file = input.files[0];
+            if (file) {
+                document.getElementById(target).src = URL.createObjectURL(file);
+            }
+        }
+
+        // Initialize dashboard
+        window.onload = function () {
+            loadPage('profile');
+        };
+    </script>
+
+</body>
+
+</html>

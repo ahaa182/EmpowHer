@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EmpowHer Admin Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Segoe UI, Arial
+        }
+
+        body {
+            background: black;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .container {
+            width: 95%;
+            height: 95vh;
+            background: black;
+            border: 2px solid #8c52ff;
+            border-radius: 28px;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: black;
+            border-right: 2px solid #8c52ff;
+            padding: 25px;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 22px;
+            color: #8c52ff;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .menu button {
+            width: 100%;
+            background: transparent;
+            border: 1.5px solid #8c52ff;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .menu button:hover {
+            background: #8c52ff;
+            color: black;
+        }
+
+        /* Content */
+        .content {
+            flex: 1;
+            padding: 30px;
+            overflow: auto;
+        }
+
+        h2 {
+            color: #8c52ff;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #8c52ff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #8c52ff;
+            color: black;
+        }
+
+        .action-btn {
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            margin: 2px;
+            background: #8c52ff;
+            color: black;
+            font-weight: 600;
+        }
+
+        /* Add Button */
+        .add-btn {
+            background: #8c52ff;
+            color: black;
+            padding: 8px 14px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            float: right;
+        }
+
+        /* Status */
+        .active {
+            color: #8c52ff;
+            font-weight: bold;
+        }
+
+        .blocked {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">ADMIN PANEL</div>
+
+            <div class="menu">
+                <button onclick="loadEntrepreneurs()">Entrepreneurs</button>
+                <button onclick="loadCategories()">Categories</button>
+                <button onclick="loadComplaints()">Complaints</button>
+                <button onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content" id="content">
+
+            <h2>Welcome Admin</h2>
+            <p>Select a menu option from the left.</p>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function loadEntrepreneurs() {
+            document.getElementById("content").innerHTML = `
+<h2>Entrepreneurs Management</h2>
+
+<table>
+<tr>
+<th>Profile</th>
+<th>Name</th>
+<th>Business</th>
+<th>Category</th>
+<th>Email</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+
+<tr>
+<td>👩</td>
+<td>Anjali</td>
+<td>Handmade Crafts</td>
+<td>Gift</td>
+<td>anjali@gmail.com</td>
+<td class="active">Active</td>
+<td>
+<button class="action-btn">View</button>
+<button class="action-btn">Block</button>
+<button class="action-btn">Delete</button>
+</td>
+</tr>
+
+<tr>
+<td>👩</td>
+<td>Meera</td>
+<td>Homemade Foods</td>
+<td>Food</td>
+<td>meera@gmail.com</td>
+<td class="blocked">Blocked</td>
+<td>
+<button class="action-btn">View</button>
+<button class="action-btn">Unblock</button>
+<button class="action-btn">Delete</button>
+</td>
+</tr>
+</table>
+`;
+        }
+
+        function loadCategories() {
+            document.getElementById("content").innerHTML = `
+<h2>Category Management</h2>
+<button class="add-btn">+ Add Category</button>
+
+<table>
+<tr>
+<th>Category Name</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+
+<tr><td>Bridal</td><td>Active</td><td><button class="action-btn">Edit</button><button class="action-btn">Delete</button></td></tr>
+<tr><td>Food</td><td>Active</td><td><button class="action-btn">Edit</button><button class="action-btn">Delete</button></td></tr>
+<tr><td>Jewellery</td><td>Active</td><td><button class="action-btn">Edit</button><button class="action-btn">Delete</button></td></tr>
+<tr><td>Gift</td><td>Active</td><td><button class="action-btn">Edit</button><button class="action-btn">Delete</button></td></tr>
+<tr><td>Clothes</td><td>Active</td><td><button class="action-btn">Edit</button><button class="action-btn">Delete</button></td></tr>
+<tr><td>Service</td><td>Active</td><td><button class="action-btn">Edit</button><button class="action-btn">Delete</button></td></tr>
+
+</table>
+`;
+        }
+
+        function loadComplaints() {
+            document.getElementById("content").innerHTML = `
+<h2>Complaints Panel</h2>
+
+<table>
+<tr>
+<th>ID</th>
+<th>From</th>
+<th>Name</th>
+<th>Email</th>
+<th>Subject</th>
+<th>Message</th>
+<th>Date</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+
+<tr>
+<td>101</td>
+<td>Customer</td>
+<td>Asha</td>
+<td>asha@gmail.com</td>
+<td>Late delivery</td>
+<td>Product delayed</td>
+<td>14-02-26</td>
+<td>Pending</td>
+<td>
+<button class="action-btn">View</button>
+<button class="action-btn">Resolve</button>
+<button class="action-btn">Delete</button>
+</td>
+</tr>
+
+<tr>
+<td>102</td>
+<td>Entrepreneur</td>
+<td>Meera</td>
+<td>meera@gmail.com</td>
+<td>Payment Issue</td>
+<td>Payment not received</td>
+<td>14-02-26</td>
+<td>Resolved</td>
+<td>
+<button class="action-btn">View</button>
+<button class="action-btn">Delete</button>
+</td>
+</tr>
+</table>
+`;
+        }
+
+        function logout() {
+            alert("Logged Out Successfully");
+            window.location.href = "index.html";
+        }
+
+    </script>
+
+</body>
+
+</html>
